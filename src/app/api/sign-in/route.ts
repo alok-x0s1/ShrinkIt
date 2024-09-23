@@ -5,18 +5,9 @@ import {
 import { dbConnect } from "@/lib/dbConnect";
 import User from "@/models/userModel";
 import { signinSchema } from "@/schemas/signinSchema";
-import { cookieOptions } from "@/utils/constants";
+import { accessCookieOptions, refreshCookieOptions } from "@/utils/constants";
+import { generateAccessAndRefreshToken } from "@/utils/generateToken";
 import { NextRequest, NextResponse } from "next/server";
-
-const generateAccessAndRefreshToken = async (userId: string) => {
-	const user = await User.findById(userId);
-
-	const accessToken = await user.generateAccessToken();
-	const refreshToken = await user.generateRefreshToken();
-	user.refreshToken = refreshToken;
-	await user.save();
-	return { accessToken, refreshToken };
-};
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
 	await dbConnect();
@@ -69,8 +60,12 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 			}
 		);
 
-		response.cookies.set("refreshToken", refreshToken, cookieOptions);
-		response.cookies.set("accessToken", accessToken, cookieOptions);
+		response.cookies.set(
+			"refreshToken",
+			refreshToken,
+			refreshCookieOptions
+		);
+		response.cookies.set("accessToken", accessToken, accessCookieOptions);
 		return response;
 	} catch (error) {
 		console.error("Sign-in error:", error);
