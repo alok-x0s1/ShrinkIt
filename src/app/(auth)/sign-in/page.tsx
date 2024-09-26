@@ -66,11 +66,11 @@ const page = () => {
 			<div className="w-full max-w-md p-8 space-y-8 rounded-lg shadow-sm border shadow-gray-500">
 				<div className="text-center">
 					<h1 className="text-4xl font-extrabold tracking-tight mb-6">
-						Join Whisper Box
+						Welcome to ShrinkIt
 					</h1>
 					<p className="mb-4">
-						Sign in to your account to connect with like-minded
-						individuals around the world.
+						Sign in to manage and track your short URLs
+						effortlessly.
 					</p>
 				</div>
 
@@ -88,7 +88,7 @@ const page = () => {
 									<FormControl>
 										<Input
 											type="email"
-											placeholder="johndoe@gmail.com"
+											placeholder="you@example.com"
 											{...field}
 										/>
 									</FormControl>
@@ -106,7 +106,7 @@ const page = () => {
 									<FormControl>
 										<Input
 											type="password"
-											placeholder="1-johndoePassword"
+											placeholder="Enter your password"
 											{...field}
 										/>
 									</FormControl>
@@ -133,12 +133,11 @@ const page = () => {
 				</Form>
 				<div className="mt-4 text-center">
 					<p>
-						Not a member yet ?{" "}
+						Don't have an account yet?{" "}
 						<Link
 							href="/sign-up"
 							className="text-blue-700 hover:text-blue-800 hover:underline duration-200"
 						>
-							{" "}
 							Sign up
 						</Link>
 					</p>

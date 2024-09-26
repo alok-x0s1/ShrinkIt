@@ -56,15 +56,6 @@ const page = () => {
 				} catch (error) {
 					const axiosError = error as AxiosError<ErrorResponse>;
 					let errorMessage = axiosError.response?.data.errorDetails;
-
-					// toast({
-					// 	title: "Username checking failed.",
-					// 	description:
-					// 		errorMessage ??
-					// 		"An error occurred while checking username.",
-					// 	duration: 3000,
-					// 	variant: "destructive",
-					// });
 					setUsernameMessage(errorMessage!);
 				} finally {
 					setIsLoading(false);
@@ -105,11 +96,10 @@ const page = () => {
 			<div className="w-full max-w-md p-8 space-y-8 rounded-lg shadow-sm border shadow-gray-500">
 				<div className="text-center">
 					<h1 className="text-4xl font-extrabold tracking-tight mb-6">
-						Join Whisper Box
+						Sign up to ShrinkIt
 					</h1>
 					<p className="mb-4">
-						Create a new account for free and connect with
-						like-minded individuals around the world.
+						Sign up to start shortening and managing your URLs.
 					</p>
 				</div>
 
@@ -127,11 +117,11 @@ const page = () => {
 									<FormControl>
 										<Input
 											type="text"
-											placeholder="John Doe"
+											placeholder="your_username"
 											{...field}
 											onChange={(e) => {
 												field.onChange(e);
-												debounced(e.target.value);
+												debounced(e.target.value); // Assuming username uniqueness check
 											}}
 										/>
 									</FormControl>
@@ -162,7 +152,7 @@ const page = () => {
 									<FormControl>
 										<Input
 											type="email"
-											placeholder="johndoe@gmail.com"
+											placeholder="your_email@example.com"
 											{...field}
 										/>
 									</FormControl>
@@ -180,7 +170,7 @@ const page = () => {
 									<FormControl>
 										<Input
 											type="password"
-											placeholder="1-johndoePassword"
+											placeholder="Create a strong password"
 											{...field}
 										/>
 									</FormControl>
@@ -207,7 +197,7 @@ const page = () => {
 				</Form>
 				<div className="mt-4 text-center">
 					<p>
-						Already a member ?{" "}
+						Already have an account?{" "}
 						<Link
 							href="/sign-in"
 							className="text-blue-700 hover:text-blue-800 hover:underline duration-200"
