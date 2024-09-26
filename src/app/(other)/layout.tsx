@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600"] });
 
 export const metadata: Metadata = {
-	title: "ShrinkIt",
+	title: "ShrinkIt | Other",
 	description:
 		"ShrinkIt is a URL shortening service that allows you to create short, easy-to-share URLs with just a few clicks.",
 };
