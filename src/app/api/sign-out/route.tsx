@@ -25,23 +25,22 @@ export async function GET(req: NextRequest) {
 			);
 		}
 
-		// if (!incomingAccessToken && incomingRefreshToken) {
-		// 	return NextResponse.json(
-		// 		createErrorResponse(
-		// 			"You don't have access token. Please refresh your toekn."
-		// 		),
-		// 		{
-		// 			status: 401,
-		// 		}
-		// 	);
-		// }
+		if (!incomingAccessToken && incomingRefreshToken) {
+			return NextResponse.json(
+				createErrorResponse(
+					"You don't have access token. Please refresh your toekn."
+				),
+				{
+					status: 401,
+				}
+			);
+		}
 
 		const decodedRefreshToken = verifyToken<RefreshTokenPayload>(
 			incomingRefreshToken,
 			process.env.REFRESH_TOKEN_SECRET ?? ""
 		);
-
-		const user = await User.findOne({ _id: decodedRefreshToken.id });
+		const user = await User.findById(decodedRefreshToken._id);
 
 		if (!user) {
 			return NextResponse.json(createErrorResponse("User not found."), {
@@ -49,7 +48,7 @@ export async function GET(req: NextRequest) {
 			});
 		}
 
-		await user.updateOne({ $set: { refreshToken: null } });
+		await user.updateOne({ $set: { refreshToken: "" } });
 
 		const response = NextResponse.json(
 			createSuccessResponse("Signed out successfully"),
