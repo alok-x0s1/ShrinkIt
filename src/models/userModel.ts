@@ -2,49 +2,54 @@ import mongoose, { Schema, Document } from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-interface User extends Document {
+export interface User extends Document {
 	username: string;
 	password: string;
 	email: string;
 	refreshToken: string;
 	createdLinks: Schema.Types.ObjectId[];
+	createdAt: Date;
+	updatedAt: Date;
 
 	comparePassword(candidatePassword: string): Promise<boolean>;
 	generateAccessToken(): Promise<string>;
 	generateRefreshToken(): Promise<string>;
 }
 
-const userSchema: Schema<User> = new Schema({
-	username: {
-		type: String,
-		required: true,
-		unique: true,
-		minlength: [3, "Username must be at least 3 characters long"],
-		maxlength: [20, "Username must be at most 20 characters long"],
-		trim: true,
-		lowercase: true,
-	},
-	email: {
-		type: String,
-		required: true,
-		unique: true,
-	},
-	password: {
-		type: String,
-		required: true,
-		minlength: [8, "Password must be at least 8 characters long"],
-		trim: true,
-	},
-	refreshToken: {
-		type: String,
-	},
-	createdLinks: [
-		{
-			type: Schema.Types.ObjectId,
-			ref: "Link",
+const userSchema: Schema<User> = new Schema(
+	{
+		username: {
+			type: String,
+			required: true,
+			unique: true,
+			minlength: [3, "Username must be at least 3 characters long"],
+			maxlength: [20, "Username must be at most 20 characters long"],
+			trim: true,
+			lowercase: true,
 		},
-	],
-});
+		email: {
+			type: String,
+			required: true,
+			unique: true,
+		},
+		password: {
+			type: String,
+			required: true,
+			minlength: [8, "Password must be at least 8 characters long"],
+			trim: true,
+		},
+		refreshToken: {
+			type: String,
+		},
+		createdLinks: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: "Link",
+			},
+		],
+	},
+	{ timestamps: true }
+);
 
 userSchema.pre("save", async function (next) {
 	if (!this.isModified("password")) {

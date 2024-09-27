@@ -1,7 +1,7 @@
 import mongoose, { Document, Schema } from "mongoose";
 import bcrypt from "bcrypt";
 
-export interface Analytics {
+export interface AnalyticsType {
 	clickDate: Date;
 	ipAddress: string;
 	country: string;
@@ -12,7 +12,8 @@ export interface Analytics {
 	region: string;
 }
 
-interface Link extends Document {
+export interface LinkType extends Document {
+	_id: string;
 	originalUrl: string;
 	shortUrl: string;
 	expirationDate: Date;
@@ -22,86 +23,91 @@ interface Link extends Document {
 	qrCode: string;
 	createdBy: Schema.Types.ObjectId;
 	isActive: boolean;
-	analytics: Analytics[];
+	analytics: AnalyticsType[];
+	createdAt: Date;
+	updatedAt: Date;
 
 	comparePassword(candidatePassword: string): Promise<boolean>;
 }
 
-const linkSchema: Schema<Link> = new Schema({
-	originalUrl: {
-		type: String,
-		required: true,
-	},
-	shortUrl: {
-		type: String,
-		required: true,
-		unique: true,
-	},
-	expirationDate: {
-		type: Date,
-		default: Date.now() + 30 * 60 * 60 * 24 * 1000,
-	},
-	clickLimit: {
-		type: Number,
-		default: 50,
-	},
-	clickCount: {
-		type: Number,
-		default: 0,
-	},
-	password: {
-		type: String,
-	},
-	qrCode: {
-		type: String,
-	},
-	createdBy: {
-		type: Schema.Types.ObjectId,
-		ref: "User",
-		required: true,
-	},
-	isActive: {
-		type: Boolean,
-		default: true,
-	},
-	analytics: [
-		{
-			clickDate: {
-				type: Date,
-				default: Date.now,
-				required: true,
-			},
-			ipAddress: {
-				type: String,
-				required: true,
-			},
-			country: {
-				type: String,
-				required: true,
-			},
-			referrer: {
-				type: String,
-				required: true,
-			},
-			device: {
-				type: String,
-				required: true,
-			},
-			browser: {
-				type: String,
-				required: true,
-			},
-			city: {
-				type: String,
-				required: true,
-			},
-			region: {
-				type: String,
-				required: true,
-			},
+const linkSchema: Schema<LinkType> = new Schema(
+	{
+		originalUrl: {
+			type: String,
+			required: true,
 		},
-	],
-});
+		shortUrl: {
+			type: String,
+			required: true,
+			unique: true,
+		},
+		expirationDate: {
+			type: Date,
+			default: Date.now() + 30 * 60 * 60 * 24 * 1000,
+		},
+		clickLimit: {
+			type: Number,
+			default: 50,
+		},
+		clickCount: {
+			type: Number,
+			default: 0,
+		},
+		password: {
+			type: String,
+		},
+		qrCode: {
+			type: String,
+		},
+		createdBy: {
+			type: Schema.Types.ObjectId,
+			ref: "User",
+			required: true,
+		},
+		isActive: {
+			type: Boolean,
+			default: true,
+		},
+		analytics: [
+			{
+				clickDate: {
+					type: Date,
+					default: Date.now,
+					required: true,
+				},
+				ipAddress: {
+					type: String,
+					required: true,
+				},
+				country: {
+					type: String,
+					required: true,
+				},
+				referrer: {
+					type: String,
+					required: true,
+				},
+				device: {
+					type: String,
+					required: true,
+				},
+				browser: {
+					type: String,
+					required: true,
+				},
+				city: {
+					type: String,
+					required: true,
+				},
+				region: {
+					type: String,
+					required: true,
+				},
+			},
+		],
+	},
+	{ timestamps: true }
+);
 
 linkSchema.pre("save", async function (next) {
 	if (!this.isModified("password") || !this.password) {
@@ -122,5 +128,6 @@ linkSchema.methods.comparePassword = async function (
 	return bcrypt.compare(candidatePassword, this.password);
 };
 
-const Link = mongoose.models.Link || mongoose.model<Link>("Link", linkSchema);
+const Link =
+	mongoose.models.Link || mongoose.model<LinkType>("Link", linkSchema);
 export default Link;
