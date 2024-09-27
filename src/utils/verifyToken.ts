@@ -14,7 +14,6 @@ export function verifyToken<T extends JwtPayload>(
 
 	try {
 		const data = jwt.verify(token, secret);
-		console.log("Decoded token:", data);
 		return data as T;
 	} catch (error) {
 		if (
