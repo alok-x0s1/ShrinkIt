@@ -53,6 +53,23 @@ export async function POST(req: NextRequest) {
 			});
 		}
 
+		const now = new Date();
+		const midnight = new Date(now.setHours(0, 0, 0, 0));
+		const linkCount = await LinkModel.countDocuments({
+			createdBy: user._id,
+			createdAt: { $gte: midnight },
+		});
+
+		if (linkCount >= 7) {
+			return NextResponse.json(
+				createErrorResponse(
+					"You have reached the limit of 7 links per day.",
+					"Either you can delete some of your existing links or wait till midnight to create new links."
+				),
+				{ status: 429 }
+			);
+		}
+
 		const shortUrl = generateUniqueString();
 
 		const link = await LinkModel.create({
@@ -78,10 +95,7 @@ export async function POST(req: NextRequest) {
 		await user.save();
 
 		return NextResponse.json(
-			createSuccessResponse("Short link created successfully", {
-				shortUrl: link.shortUrl,
-				originalUrl: link.originalUrl,
-			}),
+			createSuccessResponse("Short link created successfully", link),
 			{
 				status: 201,
 			}
