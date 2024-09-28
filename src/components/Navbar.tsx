@@ -40,7 +40,7 @@ export default function Navbar() {
 		>
 			<div className="container mx-auto flex justify-between items-center py-4 px-6 md:px-12">
 				<div className="text-2xl font-bold">
-					<a href="/">ShrinkIt</a>
+					<Link href="/">ShrinkIt</Link>
 				</div>
 
 				<ul
@@ -50,9 +50,6 @@ export default function Navbar() {
 							: "rounded-full border border-border shadow shadow-foreground py-2 px-4"
 					}`}
 				>
-					{/* <li className="hover:text-chart-1 duration-200 transition-colors">
-						<Link href="/">Home</Link>
-					</li> */}
 					<li className="hover:text-chart-1 duration-200 transition-colors">
 						<Link href="/me">Profile</Link>
 					</li>
