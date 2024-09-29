@@ -13,6 +13,7 @@ const Page = ({ params }: { params: { id: string } }) => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [qrCode, setQRCode] = useState<string | null>(null);
 	const { toast } = useToast();
+	const router = useRouter();
 
 	const handleGenerateQRCode = async () => {
 		setIsLoading(true);
@@ -37,6 +38,9 @@ const Page = ({ params }: { params: { id: string } }) => {
 					"An error occurred while generating QR Code.",
 				duration: 3000,
 			});
+			if (errorMessage === "You are not signed in.") {
+				router.push("/sign-in");
+			}
 		} finally {
 			setIsLoading(false);
 		}
