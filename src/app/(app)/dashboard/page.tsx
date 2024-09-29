@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios, { AxiosError } from "axios";
 import { useToast } from "@/hooks/use-toast";
-import { LinkType } from "@/models/linkModel";	
+import { LinkType } from "@/models/linkModel";
 import ApiResponse from "@/types/ApiResponse";
 import {
 	ArrowUpRight,
@@ -36,7 +36,7 @@ const Dashboard = () => {
 				setData(res.data.data);
 			} catch (error) {
 				const axiosError = error as AxiosError<ApiResponse<string>>;
-				let errorMessage = axiosError.response?.data.message;
+				const errorMessage = axiosError.response?.data.message;
 
 				toast({
 					title: "Fetch profile failed.",

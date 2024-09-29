@@ -49,7 +49,7 @@ const SignIn = () => {
 		} catch (error) {
 			console.log("Error in signin ", error);
 			const axiosError = error as AxiosError<ApiResponse<string>>;
-			let errorMessage = axiosError.response?.data.message;
+			const errorMessage = axiosError.response?.data.message;
 
 			toast({
 				title: "Signin failed.",
@@ -133,7 +133,7 @@ const SignIn = () => {
 				</Form>
 				<div className="mt-4 text-center">
 					<p>
-						Don't have an account yet?{" "}
+						Don&apos;t have an account yet?{" "}
 						<Link
 							href="/sign-up"
 							className="text-blue-700 hover:text-blue-800 hover:underline duration-200"

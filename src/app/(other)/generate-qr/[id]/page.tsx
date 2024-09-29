@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import ApiResponse from "@/types/ApiResponse";
 import axios, { AxiosError } from "axios";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -29,7 +30,7 @@ const GenerateQR = ({ params }: { params: { id: string } }) => {
 			});
 		} catch (error) {
 			const axiosError = error as AxiosError<ApiResponse<string>>;
-			let errorMessage = axiosError.response?.data.message;
+			const errorMessage = axiosError.response?.data.message;
 
 			toast({
 				title: "Generate QR Code failed.",
@@ -59,10 +60,12 @@ const GenerateQR = ({ params }: { params: { id: string } }) => {
 					</Button>
 				)}
 				{qrCode && (
-					<img
+					<Image
 						src={qrCode}
 						alt="QR Code"
-						className="mt-4 w-64 h-64"
+						className="mt-4"
+						width={256}
+						height={256}
 					/>
 				)}
 

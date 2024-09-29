@@ -28,7 +28,7 @@ const RefreshToken = () => {
 		} catch (error) {
 			console.log("Error in refresh token ", error);
 			const axiosError = error as AxiosError<ApiResponse<string>>;
-			let errorMessage = axiosError.response?.data.message;
+			const errorMessage = axiosError.response?.data.message;
 
 			toast({
 				title: "Error",
@@ -56,7 +56,7 @@ const RefreshToken = () => {
 				transition={{ duration: 0.3 }}
 			>
 				<p className="text-foreground/90 mb-1 text-lg font-semibold">
-					You don't have access token to continue.
+					You don&apos;t have access token to continue.
 				</p>
 				<p className="text-foreground/80 mb-6 text-sm">
 					Click the button below to refresh your token.

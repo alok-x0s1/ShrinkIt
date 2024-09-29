@@ -11,7 +11,6 @@ import {
 	FormControl,
 	FormField,
 	FormItem,
-	FormLabel,
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -59,7 +58,7 @@ const ChangePassword = ({ params }: { params: { id: string } }) => {
 			router.push(`/link/${res.data.data}`);
 		} catch (error) {
 			const axiosError = error as AxiosError<ApiResponse<string>>;
-			let errorMessage = axiosError.response?.data.message;
+			const errorMessage = axiosError.response?.data.message;
 
 			toast({
 				title: "Update password failed.",

@@ -5,7 +5,6 @@ import {
 	EllipsisVertical,
 	FileSymlink,
 	MousePointer2,
-	ScanQrCode,
 	Timer,
 } from "lucide-react";
 import Link from "next/link";

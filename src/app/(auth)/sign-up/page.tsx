@@ -55,7 +55,7 @@ const SignUp = () => {
 					setUsernameMessage(res.data.message);
 				} catch (error) {
 					const axiosError = error as AxiosError<ErrorResponse>;
-					let errorMessage = axiosError.response?.data.errorDetails;
+					const errorMessage = axiosError.response?.data.errorDetails;
 					setUsernameMessage(errorMessage!);
 				} finally {
 					setIsLoading(false);
@@ -79,7 +79,7 @@ const SignUp = () => {
 		} catch (error) {
 			console.log("Error in signup ", error);
 			const axiosError = error as AxiosError<ApiResponse<string>>;
-			let errorMessage = axiosError.response?.data.message;
+			const errorMessage = axiosError.response?.data.message;
 
 			toast({
 				title: "Signup failed.",

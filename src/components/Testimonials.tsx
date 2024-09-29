@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Contact, SquareUser, User } from "lucide-react";
 
 const renderStars = (rating: number) => {
 	return Array.from({ length: 5 }, (_, index) => (

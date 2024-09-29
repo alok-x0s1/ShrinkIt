@@ -119,16 +119,18 @@ const EditLink = () => {
 			setIsSubmitting(true);
 			try {
 				const response = await axios.patch(`/api/link/${id}`, data);
-				toast({
-					title: "Link updated successfully",
-					description: "The link has been updated successfully.",
-					duration: 3000,
-				});
+				if (response) {
+					toast({
+						title: "Link updated successfully",
+						description: "The link has been updated successfully.",
+						duration: 3000,
+					});
+				}
 
 				router.back();
 			} catch (error) {
 				const axiosError = error as AxiosError<ApiResponse<string>>;
-				let errorMessage = axiosError.response?.data.message;
+				const errorMessage = axiosError.response?.data.message;
 
 				toast({
 					title: "Update link failed.",

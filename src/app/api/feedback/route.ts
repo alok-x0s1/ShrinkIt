@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { feedbackSchema } from "@/schemas/feedbackSchema";
-import { z } from "zod";
 import { dbConnect } from "@/lib/dbConnect";
 import {
 	createErrorResponse,

@@ -52,7 +52,7 @@ const AddPassword = ({ params }: { params: { id: string } }) => {
 			router.push(`/link/${res.data.data}`);
 		} catch (error) {
 			const axiosError = error as AxiosError<ApiResponse<string>>;
-			let errorMessage = axiosError.response?.data.message;
+			const errorMessage = axiosError.response?.data.message;
 
 			toast({
 				title: "Add password failed.",

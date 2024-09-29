@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import ApiResponse, { ErrorResponse } from "@/types/ApiResponse";
 import axios, { AxiosError } from "axios";
-import { Loader, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
@@ -24,7 +24,6 @@ import {
 	FormControl,
 	FormField,
 	FormItem,
-	FormLabel,
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -57,7 +56,7 @@ const Profile = () => {
 				setData(res.data.data);
 			} catch (error) {
 				const axiosError = error as AxiosError<ApiResponse<string>>;
-				let errorMessage = axiosError.response?.data.message;
+				const errorMessage = axiosError.response?.data.message;
 
 				toast({
 					title: "Fetch profile failed.",
@@ -89,7 +88,7 @@ const Profile = () => {
 			router.push("/");
 		} catch (error) {
 			const axiosError = error as AxiosError<ApiResponse<string>>;
-			let errorMessage = axiosError.response?.data.message;
+			const errorMessage = axiosError.response?.data.message;
 
 			toast({
 				title: "Account deletion failed",
@@ -241,7 +240,7 @@ const EditProfileButton = ({
 					setUsernameMessage(res.data.message);
 				} catch (error) {
 					const axiosError = error as AxiosError<ErrorResponse>;
-					let errorMessage = axiosError.response?.data.errorDetails;
+					const errorMessage = axiosError.response?.data.errorDetails;
 					setUsernameMessage(errorMessage!);
 				} finally {
 					setIsLoading(false);
@@ -273,7 +272,7 @@ const EditProfileButton = ({
 			}, 1000);
 		} catch (error) {
 			const axiosError = error as AxiosError<ErrorResponse>;
-			let errorMessage = axiosError.response?.data.message;
+			const errorMessage = axiosError.response?.data.message;
 			toast({
 				title: "Profile update failed",
 				description:
@@ -375,7 +374,7 @@ const LogOutButton = ({ className }: { className: string }) => {
 			router.push("/");
 		} catch (error) {
 			const axiosError = error as AxiosError<ErrorResponse>;
-			let errorMessage = axiosError.response?.data.message;
+			const errorMessage = axiosError.response?.data.message;
 			toast({
 				title: "Log out failed",
 				description:
