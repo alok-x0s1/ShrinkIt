@@ -1,4 +1,4 @@
-import React, { memo, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import {
 	BarChart,
 	Bar,
@@ -548,16 +548,16 @@ const DashboardLinkData = ({ linkData }: { linkData: LinkType }) => {
 	);
 };
 
-const MetricCard = memo(
-	({
-		icon,
-		title,
-		value,
-	}: {
-		icon: React.ReactNode;
-		title: string;
-		value: string | number;
-	}) => (
+const MetricCard = ({
+	icon,
+	title,
+	value,
+}: {
+	icon: React.ReactNode;
+	title: string;
+	value: string | number;
+}) => {
+	return (
 		<Card className="w-fit h-fit flex flex-col rounded-md px-4 py-2 bg-background hover:shadow-md transition-all duration-200 cursor-default">
 			<CardContent className="flex flex-col gap-2">
 				<div className="flex items-center gap-2">
@@ -567,8 +567,8 @@ const MetricCard = memo(
 				<p className="text-lg text-foreground/80 mt-1">{value}</p>
 			</CardContent>
 		</Card>
-	)
-);
+	);
+};
 
 export default DashboardLinkData;
 
