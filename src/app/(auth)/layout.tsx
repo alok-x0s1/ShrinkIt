@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { Lato, Poppins } from "next/font/google";
+import { Lato } from "next/font/google";
 import "../globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
-
-const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600"] });
 
 export const lato = Lato({
 	subsets: ["latin"],

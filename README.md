@@ -69,7 +69,7 @@ Or click on `Start for Free` button to login to your account.
 
 ## Link Page
 
-![Link Page](./public/dashboard.png)
+![Link Page](./public/link.png)
 
 Here you can see the analytics of the link.
 
@@ -113,4 +113,4 @@ We welcome contributions to ShrinkIt! If you have any ideas or suggestions, plea
 
 # Contact
 
-If you have any questions or feedback, please contact me on [alokx0s1](https://github.com/alok-x0s1).
+If you have any questions or feedback, please contact me on [alok-x0s1](https://github.com/alok-x0s1).

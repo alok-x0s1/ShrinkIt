@@ -30,7 +30,7 @@ const formSchema = z.object({
 	isActive: z.boolean().default(true),
 });
 
-const Edit = () => {
+const EditLink = () => {
 	const path = usePathname();
 	const id = path.split("/")[2];
 	const { toast } = useToast();
@@ -119,11 +119,13 @@ const Edit = () => {
 			setIsSubmitting(true);
 			try {
 				const response = await axios.patch(`/api/link/${id}`, data);
-				toast({
-					title: "Link updated successfully",
-					description: "The link has been updated successfully.",
-					duration: 3000,
-				});
+				if (response) {
+					toast({
+						title: "Link updated successfully",
+						description: "The link has been updated successfully.",
+						duration: 3000,
+					});
+				}
 
 				router.back();
 			} catch (error) {
@@ -239,4 +241,4 @@ const Edit = () => {
 	);
 };
 
-export default Edit;
+export default EditLink;

@@ -363,9 +363,9 @@ const DashboardLinkData = ({ linkData }: { linkData: LinkType }) => {
 						<div className="flex flex-col gap-2">
 							<h2 className="text-xl font-bold">QR Code</h2>
 							<p className="text-foreground/80 text-base">
-								You haven&apos;t generated a QR code for this link
-								yet. Click the button below to generate a QR
-								code.
+								You haven&apos;t generated a QR code for this
+								link yet. Click the button below to generate a
+								QR code.
 							</p>
 						</div>
 						<Button
@@ -548,16 +548,16 @@ const DashboardLinkData = ({ linkData }: { linkData: LinkType }) => {
 	);
 };
 
-const MetricCard = React.memo(
-	({
-		icon,
-		title,
-		value,
-	}: {
-		icon: React.ReactNode;
-		title: string;
-		value: string | number;
-	}) => (
+const MetricCard = ({
+	icon,
+	title,
+	value,
+}: {
+	icon: React.ReactNode;
+	title: string;
+	value: string | number;
+}) => {
+	return (
 		<Card className="w-fit h-fit flex flex-col rounded-md px-4 py-2 bg-background hover:shadow-md transition-all duration-200 cursor-default">
 			<CardContent className="flex flex-col gap-2">
 				<div className="flex items-center gap-2">
@@ -567,8 +567,8 @@ const MetricCard = React.memo(
 				<p className="text-lg text-foreground/80 mt-1">{value}</p>
 			</CardContent>
 		</Card>
-	)
-);
+	);
+};
 
 export default DashboardLinkData;
 

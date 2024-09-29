@@ -19,11 +19,13 @@ const DeletePassword = ({ params }: { params: { id: string } }) => {
 		try {
 			const res = await axios.delete(`/api/add-password/${id}`);
 
-			toast({
-				title: "Success",
-				description: "Password deleted successfully",
-			});
-			router.push(`/link/${id}`);
+			if (res) {
+				toast({
+					title: "Success",
+					description: "Password deleted successfully",
+				});
+				router.push(`/link/${id}`);
+			}
 		} catch (error) {
 			const axiosError = error as AxiosError<ApiResponse<string>>;
 			toast({
