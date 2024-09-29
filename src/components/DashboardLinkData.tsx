@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { memo, useRef, useState } from "react";
 import {
 	BarChart,
 	Bar,
@@ -363,9 +363,9 @@ const DashboardLinkData = ({ linkData }: { linkData: LinkType }) => {
 						<div className="flex flex-col gap-2">
 							<h2 className="text-xl font-bold">QR Code</h2>
 							<p className="text-foreground/80 text-base">
-								You haven't generated a QR code for this link
-								yet. Click the button below to generate a QR
-								code.
+								You haven&apos;t generated a QR code for this
+								link yet. Click the button below to generate a
+								QR code.
 							</p>
 						</div>
 						<Button
@@ -548,7 +548,7 @@ const DashboardLinkData = ({ linkData }: { linkData: LinkType }) => {
 	);
 };
 
-const MetricCard = React.memo(
+const MetricCard = memo(
 	({
 		icon,
 		title,
@@ -595,7 +595,7 @@ const DeleteQRCode = ({ id }: { id: string }) => {
 			}
 		} catch (error) {
 			const axiosError = error as AxiosError<ErrorResponse>;
-			let errorMessage = axiosError.response?.data.errorDetails;
+			const errorMessage = axiosError.response?.data.errorDetails;
 			toast({
 				title: "Delete QR code failed.",
 				description:
