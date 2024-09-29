@@ -100,6 +100,10 @@ const Page = ({ params }: { params: { url: string } }) => {
 				const axiosError = error as AxiosError<ApiResponse<string>>;
 				const axiosErrorMessage = axiosError.response?.data.message;
 				setError(axiosErrorMessage || "An unexpected error occurred");
+
+				if (axiosErrorMessage === "The Short URL has a password.") {
+					router.push(`/password?url=${url}`);
+				}
 			} finally {
 				setLoading(false);
 			}
