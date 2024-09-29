@@ -36,7 +36,7 @@ const formSchema = z.object({
 	isActive: z.boolean().default(true),
 });
 
-const page = () => {
+const CreateLink = () => {
 	const { toast } = useToast();
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<null | string>(null);
@@ -283,4 +283,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default CreateLink;

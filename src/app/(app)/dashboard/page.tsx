@@ -22,7 +22,7 @@ interface DashboardData {
 	links: LinkType[];
 }
 
-const page = () => {
+const Dashboard = () => {
 	const [data, setData] = useState<DashboardData | null>(null);
 	const [isLoading, setIsLoading] = useState(false);
 	const { toast } = useToast();
@@ -146,4 +146,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default Dashboard;

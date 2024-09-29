@@ -23,7 +23,7 @@ import { useForm } from "react-hook-form";
 import { useDebounceCallback } from "usehooks-ts";
 import { z } from "zod";
 
-const page = () => {
+const SignUp = () => {
 	const [username, setUsername] = useState<string>("");
 	const [usernameMessage, setUsernameMessage] = useState<string | null>(null);
 	const [isLoading, setIsLoading] = useState(false);
@@ -211,4 +211,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default SignUp;

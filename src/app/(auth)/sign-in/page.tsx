@@ -22,7 +22,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-const page = () => {
+const SignIn = () => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const { toast } = useToast();
 	const router = useRouter();
@@ -147,4 +147,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default SignIn;

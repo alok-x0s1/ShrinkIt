@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export default function page() {
+export default function HowToUse() {
 	return (
 		<div className="bg-background text-foreground min-h-screen pt-24">
 			<section className="py-16 px-8">

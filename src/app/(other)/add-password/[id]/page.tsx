@@ -27,7 +27,7 @@ const formSchema = z.object({
 		.max(16, { message: "Password must be at most 16 characters" }),
 });
 
-const page = ({ params }: { params: { id: string } }) => {
+const AddPassword = ({ params }: { params: { id: string } }) => {
 	const { id } = params;
 	const router = useRouter();
 	const { toast } = useToast();
@@ -113,4 +113,4 @@ const page = ({ params }: { params: { id: string } }) => {
 	);
 };
 
-export default page;
+export default AddPassword;

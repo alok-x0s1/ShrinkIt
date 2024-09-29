@@ -8,7 +8,7 @@ import { Loader2 } from "lucide-react";
 import axios, { AxiosError } from "axios";
 import ApiResponse from "@/types/ApiResponse";
 
-const page = ({ params }: { params: { id: string } }) => {
+const DeletePassword = ({ params }: { params: { id: string } }) => {
 	const { id } = params;
 	const router = useRouter();
 	const [isLoading, setIsLoading] = useState(false);
@@ -57,4 +57,4 @@ const page = ({ params }: { params: { id: string } }) => {
 	);
 };
 
-export default page;
+export default DeletePassword;

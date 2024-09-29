@@ -34,7 +34,7 @@ const formSchema = z.object({
 		.max(16, "Password must be at most 16 characters"),
 });
 
-const page = () => {
+const Password = () => {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const url = searchParams.get("url");
@@ -196,4 +196,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default Password;

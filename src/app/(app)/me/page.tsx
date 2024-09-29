@@ -43,7 +43,7 @@ const formSchema = z.object({
 	username: z.string().min(3).max(30),
 });
 
-const page = () => {
+const Profile = () => {
 	const [data, setData] = useState<Profile | null>(null);
 	const [isLoading, setIsLoading] = useState(false);
 	const { toast } = useToast();
@@ -174,7 +174,7 @@ const page = () => {
 	);
 };
 
-export default page;
+export default Profile;
 
 const DeleteButton = ({
 	handleDelete,

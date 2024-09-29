@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 
-const page = () => {
+const RefreshToken = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const { toast } = useToast();
 	const router = useRouter();
@@ -77,4 +77,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default RefreshToken;

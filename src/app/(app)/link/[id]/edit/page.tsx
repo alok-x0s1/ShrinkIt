@@ -30,7 +30,7 @@ const formSchema = z.object({
 	isActive: z.boolean().default(true),
 });
 
-const page = () => {
+const EditLink = () => {
 	const path = usePathname();
 	const id = path.split("/")[2];
 	const { toast } = useToast();
@@ -239,4 +239,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default EditLink;
