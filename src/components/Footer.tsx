@@ -12,7 +12,7 @@ export default function Footer() {
 			whileInView={{ opacity: 1, y: 0 }}
 			transition={{ duration: 1 }}
 		>
-			<div className="container mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+			<div className="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
 				<motion.div
 					className="flex flex-col"
 					initial={{ opacity: 0, x: -50 }}
@@ -61,7 +61,7 @@ export default function Footer() {
 						</li>
 						<li>
 							<Link
-								href="/github"
+								href="/404"
 								className="hover:text-chart-1 transition-colors"
 							>
 								404
@@ -83,6 +83,7 @@ export default function Footer() {
 							target="_blank"
 							rel="noopener noreferrer"
 							className="text-primary hover:text-chart-1 transition-colors"
+							aria-label="GitHub"
 						>
 							<Github size={28} />
 						</a>
@@ -91,6 +92,7 @@ export default function Footer() {
 							target="_blank"
 							rel="noopener noreferrer"
 							className="text-primary hover:text-chart-2 transition-colors"
+							aria-label="Twitter"
 						>
 							<Twitter size={28} />
 						</a>
@@ -99,6 +101,7 @@ export default function Footer() {
 							target="_blank"
 							rel="noopener noreferrer"
 							className="text-primary hover:text-chart-3 transition-colors"
+							aria-label="LinkedIn"
 						>
 							<Linkedin size={28} />
 						</a>
@@ -107,6 +110,7 @@ export default function Footer() {
 							target="_blank"
 							rel="noopener noreferrer"
 							className="text-primary hover:text-chart-1 transition-colors"
+							aria-label="Instagram"
 						>
 							<Instagram size={28} />
 						</a>

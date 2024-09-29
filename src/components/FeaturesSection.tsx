@@ -1,4 +1,3 @@
-// components/FeaturesSection.js
 import { motion } from "framer-motion";
 import {
 	ChartNoAxesCombined,
@@ -57,7 +56,6 @@ export default function FeaturesSection() {
 			title: "Custom Link Previews",
 			description:
 				"Customize the link preview for social media sharing by defining the title, description, and image that will appear when your link is shared. Tailor the appearance of your shared URLs for a polished, professional look that matches your brand's identity.",
-
 			icon: <ScanEye />,
 			tags: ["social media", "custom preview", "branding"],
 		},
@@ -79,10 +77,10 @@ export default function FeaturesSection() {
 
 	return (
 		<section className="pb-16 min-h-screen" id="features">
-			<div className="container mx-auto px-8">
+			<div className="container mx-auto px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20">
 				{/* Section Header */}
 				<motion.h2
-					className="text-center text-3xl md:text-4xl font-bold mb-24"
+					className="text-center text-2xl sm:text-3xl md:text-4xl font-bold mb-12 md:mb-24"
 					initial={{ opacity: 0, y: -50 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.8 }}
@@ -92,7 +90,7 @@ export default function FeaturesSection() {
 
 				{/* Features Grid */}
 				<motion.div
-					className="grid grid-cols-1 md:grid-cols-3 gap-8"
+					className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
 					initial={{ opacity: 0 }}
 					whileInView={{ opacity: 1 }}
 					transition={{ duration: 1 }}
@@ -100,16 +98,19 @@ export default function FeaturesSection() {
 					{features.map((feature, index) => (
 						<motion.div
 							key={index}
-							className="flex flex-col items-center p-6 gap-2 rounded-lg border border-border"
+							className="flex flex-col items-start sm:items-center p-4 sm:p-6 gap-4 rounded-lg border border-border bg-background transition-transform hover:scale-105"
 							initial={{ opacity: 0, y: 50 }}
 							whileInView={{ opacity: 1, y: 0 }}
 							transition={{ delay: index * 0.2, duration: 1 }}
 						>
-							{feature.icon}
-							<h3 className="text-xl font-semibold mb-2">
+							{/* Icon container */}
+							<div className="text-primary mb-2">
+								{feature.icon}
+							</div>
+							<h3 className="text-lg sm:text-xl font-semibold text-start sm:text-center">
 								{feature.title}
 							</h3>
-							<p className="text-start text-foreground/50">
+							<p className="text-sm sm:text-base text-start sm:text-center text-foreground/60">
 								{feature.description}
 							</p>
 						</motion.div>

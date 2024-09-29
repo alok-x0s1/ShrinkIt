@@ -38,13 +38,14 @@ export default function Navbar() {
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.3 }}
 		>
-			<div className="container mx-auto flex justify-between items-center py-4 px-6 md:px-12">
+			<div className="container mx-auto flex justify-between items-center py-4 px-4 sm:px-6 md:px-8 lg:px-12">
 				<div className="text-2xl font-bold">
 					<Link href="/">ShrinkIt</Link>
 				</div>
 
+				{/* Desktop Menu */}
 				<ul
-					className={`hidden md:flex space-x-8  ${
+					className={`hidden md:flex space-x-4 lg:space-x-8 ${
 						scrolled
 							? "py-2 px-4"
 							: "rounded-full border border-border shadow shadow-foreground py-2 px-4"
@@ -64,6 +65,7 @@ export default function Navbar() {
 					</li>
 				</ul>
 
+				{/* Desktop Right Actions */}
 				<ul className="hidden md:flex space-x-4">
 					<li>
 						<Button variant="secondary">
@@ -75,6 +77,7 @@ export default function Navbar() {
 					</li>
 				</ul>
 
+				{/* Mobile Menu Button */}
 				<div className="md:hidden">
 					<button
 						onClick={() => setIsOpen(!isOpen)}
@@ -88,7 +91,7 @@ export default function Navbar() {
 			{/* Mobile Menu */}
 			{isOpen && (
 				<motion.div
-					className="md:hidden border border-border backdrop-blur-md bg-background/75 shadow-lg md:w-1/3 w-1/2 ml-auto rounded-md right-6 z-20 absolute top-16"
+					className="md:hidden border border-border backdrop-blur-md bg-background/75 shadow-lg w-[80%] sm:w-[60%] ml-auto rounded-md right-4 top-16 z-20 absolute"
 					initial={{ opacity: 0, y: -20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.3 }}
@@ -126,11 +129,8 @@ export default function Navbar() {
 						</li>
 
 						<div className="flex flex-col space-y-2 mt-4">
-							<li>
-								<Button
-									variant="secondary"
-									onClick={() => setIsOpen(false)}
-								>
+							<li onClick={() => setIsOpen(false)}>
+								<Button variant="secondary">
 									<Link href="/sign-in">Sign in</Link>
 								</Button>
 							</li>

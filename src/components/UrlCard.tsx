@@ -17,18 +17,25 @@ const UrlCard = ({ link }: { link: LinkType }) => {
 	const { toast } = useToast();
 	const router = useRouter();
 
-	const handleCopyToClipboard = () => {
-		navigator.clipboard.writeText(link.shortUrl);
-
-		toast({
-			title: "Short URL copied to clipboard",
-			description: "You can now paste it wherever you want",
-			duration: 3000,
-		});
+	const handleCopyToClipboard = async () => {
+		try {
+			await navigator.clipboard.writeText(link.shortUrl);
+			toast({
+				title: "Short URL copied to clipboard",
+				description: "You can now paste it wherever you want",
+				duration: 3000,
+			});
+		} catch (error) {
+			toast({
+				title: "Error copying URL",
+				description: "Failed to copy the URL. Please try again.",
+				duration: 3000,
+			});
+		}
 	};
 
 	return (
-		<Card className="w-full relative max-w-xl bg-background text-foreground border border-border hover:-translate-y-[2px] duration-300">
+		<Card className="w-full relative max-w-xl bg-background text-foreground border border-border hover:-translate-y-[2px] transition-transform duration-300">
 			<div className="absolute -top-5 -right-12 bg-foreground text-background p-1 rounded-sm">
 				<div className="flex gap-1 items-center">
 					<Timer className="w-4 h-4" />
@@ -48,14 +55,16 @@ const UrlCard = ({ link }: { link: LinkType }) => {
 							{link.shortUrl.split(":3000/")[1]}
 						</p>
 						<div className="flex gap-3 items-center">
-							<div className="border border-gray-500 p-[7px] shadow-md rounded-full hover:-translate-y-[1px] duration-300">
-								<CopyIcon
-									className="w-4 h-4 cursor-pointer"
-									onClick={handleCopyToClipboard}
-								/>
+							<div
+								className="border border-gray-500 p-[7px] shadow-md rounded-full hover:bg-gray-300 transition-colors cursor-pointer"
+								aria-label="Copy short URL"
+								onClick={handleCopyToClipboard}
+							>
+								<CopyIcon className="w-4 h-4" />
 							</div>
-							<div className="p-1 text-sm border border-gray-500 shadow-sm flex gap-1 rounded-sm items-center ml-2 hover:bg-accent cursor-default hover:text-accent-foreground">
-								<MousePointer2 className="w-4 h-4" /> clicks {link.clickCount}
+							<div className="p-1 text-sm border border-gray-500 shadow-sm flex gap-1 rounded-sm items-center ml-2 hover:bg-accent cursor-default">
+								<MousePointer2 className="w-4 h-4" /> clicks{" "}
+								{link.clickCount}
 							</div>
 						</div>
 					</div>
@@ -65,7 +74,11 @@ const UrlCard = ({ link }: { link: LinkType }) => {
 							<div>
 								<CornerDownRight className="w-4 h-4" />
 							</div>
-							<Link href={link.originalUrl} target="_blank">
+							<Link
+								href={link.originalUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								{link.originalUrl.split("://")[1].slice(0, 40)}
 								...
 							</Link>
@@ -76,6 +89,7 @@ const UrlCard = ({ link }: { link: LinkType }) => {
 				<div
 					className="w-fit cursor-pointer"
 					title="Click to view analytics"
+					aria-label="View analytics"
 					onClick={() => {
 						router.push(`/link/${link._id}`);
 					}}

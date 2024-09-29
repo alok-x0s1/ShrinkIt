@@ -19,13 +19,13 @@ const renderStars = (rating: number) => {
 export default function Testimonials() {
 	return (
 		<section className="py-16">
-			<div className="container mx-auto px-8">
+			<div className="container mx-auto px-4 md:px-8">
 				<h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
 					What Our Users Say
 				</h2>
 
 				<motion.div
-					className="flex space-x-8"
+					className="flex flex-wrap justify-center space-x-0 space-y-8 md:space-x-8 md:space-y-0"
 					initial={{ x: "100%" }}
 					animate={{ x: 0 }}
 					transition={{ duration: 0.2 }}
@@ -33,7 +33,7 @@ export default function Testimonials() {
 					{testimonials.map((testimonial, index) => (
 						<motion.div
 							key={index}
-							className="flex flex-col p-6 border box-border rounded-lg shadow-lg w-80 transition-transform duration-300 hover:shadow-xl"
+							className="flex flex-col p-6 border box-border rounded-lg shadow-lg w-full sm:w-80 transition-transform duration-300 hover:shadow-xl"
 							whileHover={{ scale: 1.03 }}
 						>
 							<img
@@ -41,10 +41,10 @@ export default function Testimonials() {
 								alt={testimonial.name}
 								className="w-16 h-16 rounded-full border-2 border-gray-300 mb-4"
 							/>
-							<div className="flex">
+							<div className="flex mb-2">
 								{renderStars(testimonial.rating)}
 							</div>
-							<p className="text-foreground/90 mb-4">
+							<p className="text-foreground/90 mb-4 text-sm md:text-base">
 								{testimonial.feedback}
 							</p>
 							<h4 className="text-lg font-semibold text-foreground/80">

@@ -8,6 +8,7 @@ import axios, { AxiosError } from "axios";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const page = ({ params }: { params: { id: string } }) => {
 	const { id } = params;
@@ -29,8 +30,7 @@ const page = ({ params }: { params: { id: string } }) => {
 				toast({
 					title: "Fetch link failed.",
 					description:
-						errorMessage ??
-						"An error occurred while fetching link.",
+						errorMessage ?? "An error occurred while fetching the link.",
 					duration: 3000,
 					variant: "destructive",
 				});
@@ -46,14 +46,29 @@ const page = ({ params }: { params: { id: string } }) => {
 
 	if (isLoading)
 		return (
-			<div className="flex justify-center items-start pt-32 min-h-screen">
+			<motion.div
+				initial={{ opacity: 0, y: 10 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.5, ease: "easeInOut" }}
+				className="flex justify-center items-start pt-32 min-h-screen"
+			>
 				<h1 className="text-2xl font-bold flex items-center gap-2">
 					<Loader2 className="animate-spin" /> Loading...
 				</h1>
-			</div>
+			</motion.div>
 		);
 
-	return linkData ? <DashboardLinkData linkData={linkData} /> : null;
+	return (
+		linkData ? (
+			<motion.div
+				initial={{ opacity: 0, scale: 0.95 }}
+				animate={{ opacity: 1, scale: 1 }}
+				transition={{ duration: 0.4, ease: "easeOut" }}
+			>
+				<DashboardLinkData linkData={linkData} />
+			</motion.div>
+		) : null
+	);
 };
 
 export default page;
