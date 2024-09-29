@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const page = ({ params }: { params: { id: string } }) => {
+const Link = ({ params }: { params: { id: string } }) => {
 	const { id } = params;
 	const [linkData, setLinkData] = useState<LinkType>();
 	const [isLoading, setIsLoading] = useState(false);
@@ -25,7 +25,7 @@ const page = ({ params }: { params: { id: string } }) => {
 				setLinkData(res.data.data);
 			} catch (error) {
 				const axiosError = error as AxiosError<ApiResponse<string>>;
-				let errorMessage = axiosError.response?.data.message;
+				const errorMessage = axiosError.response?.data.message;
 
 				toast({
 					title: "Fetch link failed.",
@@ -71,4 +71,4 @@ const page = ({ params }: { params: { id: string } }) => {
 	);
 };
 
-export default page;
+export default Link;

@@ -30,7 +30,7 @@ const formSchema = z.object({
 	isActive: z.boolean().default(true),
 });
 
-const page = () => {
+const Edit = () => {
 	const path = usePathname();
 	const id = path.split("/")[2];
 	const { toast } = useToast();
@@ -48,7 +48,7 @@ const page = () => {
 				setLinkData(response.data.data);
 			} catch (error) {
 				const axiosError = error as AxiosError<ApiResponse<string>>;
-				let errorMessage = axiosError.response?.data.message;
+				const errorMessage = axiosError.response?.data.message;
 
 				toast({
 					title: "Fetch link failed.",
@@ -128,7 +128,7 @@ const page = () => {
 				router.back();
 			} catch (error) {
 				const axiosError = error as AxiosError<ApiResponse<string>>;
-				let errorMessage = axiosError.response?.data.message;
+				const errorMessage = axiosError.response?.data.message;
 
 				toast({
 					title: "Update link failed.",
@@ -239,4 +239,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default Edit;

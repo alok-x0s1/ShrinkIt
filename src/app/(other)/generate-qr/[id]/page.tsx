@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-const Page = ({ params }: { params: { id: string } }) => {
+const GenerateQR = ({ params }: { params: { id: string } }) => {
 	const { id } = params;
 	const [isLoading, setIsLoading] = useState(false);
 	const [qrCode, setQRCode] = useState<string | null>(null);
@@ -29,7 +29,7 @@ const Page = ({ params }: { params: { id: string } }) => {
 			});
 		} catch (error) {
 			const axiosError = error as AxiosError<ApiResponse<string>>;
-			let errorMessage = axiosError.response?.data.message;
+			const errorMessage = axiosError.response?.data.message;
 
 			toast({
 				title: "Generate QR Code failed.",
@@ -76,4 +76,4 @@ const Page = ({ params }: { params: { id: string } }) => {
 	);
 };
 
-export default Page;
+export default GenerateQR;

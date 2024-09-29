@@ -17,7 +17,7 @@ interface GithubData {
 	login: string;
 }
 
-const Page = () => {
+const Github = () => {
 	const [data, setData] = useState<GithubData | null>(null);
 	const [loading, setLoading] = useState(false);
 
@@ -153,4 +153,4 @@ const Page = () => {
 	);
 };
 
-export default Page;
+export default Github;

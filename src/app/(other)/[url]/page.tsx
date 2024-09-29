@@ -14,7 +14,7 @@ interface CountryInfo {
 	country: string;
 }
 
-const Page = ({ params }: { params: { url: string } }) => {
+const Redirect = ({ params }: { params: { url: string } }) => {
 	const { url } = params;
 	const [loading, setLoading] = useState<boolean>(false);
 	const [error, setError] = useState<string | null>(null);
@@ -162,4 +162,4 @@ const Page = ({ params }: { params: { url: string } }) => {
 	);
 };
 
-export default Page;
+export default Redirect;

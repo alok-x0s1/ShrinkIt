@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export default function page() {
+export default function HowToUse() {
 	return (
 		<div className="bg-background text-foreground min-h-screen pt-24">
 			<section className="py-16 px-8">
@@ -20,7 +20,7 @@ export default function page() {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.2, duration: 1 }}
 				>
-					ShrinkIt is designed to make your life easier. Here's a
+					ShrinkIt is designed to make your life easier. Here&apos;s a
 					simple guide to help you get started:
 				</motion.p>
 			</section>

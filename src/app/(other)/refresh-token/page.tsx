@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 
-const page = () => {
+const RefreshToken = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const { toast } = useToast();
 	const router = useRouter();
@@ -28,7 +28,7 @@ const page = () => {
 		} catch (error) {
 			console.log("Error in refresh token ", error);
 			const axiosError = error as AxiosError<ApiResponse<string>>;
-			let errorMessage = axiosError.response?.data.message;
+			const errorMessage = axiosError.response?.data.message;
 
 			toast({
 				title: "Error",
@@ -77,4 +77,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default RefreshToken;

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios, { AxiosError } from "axios";
 import { useToast } from "@/hooks/use-toast";
-import { LinkType } from "@/models/linkModel";	
+import { LinkType } from "@/models/linkModel";
 import ApiResponse from "@/types/ApiResponse";
 import {
 	ArrowUpRight,
@@ -22,7 +22,7 @@ interface DashboardData {
 	links: LinkType[];
 }
 
-const page = () => {
+const Dashboard = () => {
 	const [data, setData] = useState<DashboardData | null>(null);
 	const [isLoading, setIsLoading] = useState(false);
 	const { toast } = useToast();
@@ -36,7 +36,7 @@ const page = () => {
 				setData(res.data.data);
 			} catch (error) {
 				const axiosError = error as AxiosError<ApiResponse<string>>;
-				let errorMessage = axiosError.response?.data.message;
+				const errorMessage = axiosError.response?.data.message;
 
 				toast({
 					title: "Fetch profile failed.",
@@ -146,4 +146,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default Dashboard;

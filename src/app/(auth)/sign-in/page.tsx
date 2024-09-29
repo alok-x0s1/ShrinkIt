@@ -22,7 +22,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-const page = () => {
+const SignIn = () => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const { toast } = useToast();
 	const router = useRouter();
@@ -49,7 +49,7 @@ const page = () => {
 		} catch (error) {
 			console.log("Error in signin ", error);
 			const axiosError = error as AxiosError<ApiResponse<string>>;
-			let errorMessage = axiosError.response?.data.message;
+			const errorMessage = axiosError.response?.data.message;
 
 			toast({
 				title: "Signin failed.",
@@ -133,7 +133,7 @@ const page = () => {
 				</Form>
 				<div className="mt-4 text-center">
 					<p>
-						Don't have an account yet?{" "}
+						Don&apos;t have an account yet?{" "}
 						<Link
 							href="/sign-up"
 							className="text-blue-700 hover:text-blue-800 hover:underline duration-200"
@@ -147,4 +147,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default SignIn;

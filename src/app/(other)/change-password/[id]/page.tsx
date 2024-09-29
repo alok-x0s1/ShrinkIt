@@ -31,7 +31,7 @@ const formSchema = z.object({
 		.max(16, { message: "Password must be at most 16 characters" }),
 });
 
-const page = ({ params }: { params: { id: string } }) => {
+const ChangePassword = ({ params }: { params: { id: string } }) => {
 	const { id } = params;
 	const [isLoading, setIsLoading] = useState(false);
 	const { toast } = useToast();
@@ -59,7 +59,7 @@ const page = ({ params }: { params: { id: string } }) => {
 			router.push(`/link/${res.data.data}`);
 		} catch (error) {
 			const axiosError = error as AxiosError<ApiResponse<string>>;
-			let errorMessage = axiosError.response?.data.message;
+			const errorMessage = axiosError.response?.data.message;
 
 			toast({
 				title: "Update password failed.",
@@ -133,4 +133,4 @@ const page = ({ params }: { params: { id: string } }) => {
 	);
 };
 
-export default page;
+export default ChangePassword;

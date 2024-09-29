@@ -23,7 +23,7 @@ import { useForm } from "react-hook-form";
 import { useDebounceCallback } from "usehooks-ts";
 import { z } from "zod";
 
-const page = () => {
+const SignUp = () => {
 	const [username, setUsername] = useState<string>("");
 	const [usernameMessage, setUsernameMessage] = useState<string | null>(null);
 	const [isLoading, setIsLoading] = useState(false);
@@ -55,7 +55,7 @@ const page = () => {
 					setUsernameMessage(res.data.message);
 				} catch (error) {
 					const axiosError = error as AxiosError<ErrorResponse>;
-					let errorMessage = axiosError.response?.data.errorDetails;
+					const errorMessage = axiosError.response?.data.errorDetails;
 					setUsernameMessage(errorMessage!);
 				} finally {
 					setIsLoading(false);
@@ -79,7 +79,7 @@ const page = () => {
 		} catch (error) {
 			console.log("Error in signup ", error);
 			const axiosError = error as AxiosError<ApiResponse<string>>;
-			let errorMessage = axiosError.response?.data.message;
+			const errorMessage = axiosError.response?.data.message;
 
 			toast({
 				title: "Signup failed.",
@@ -121,7 +121,7 @@ const page = () => {
 											{...field}
 											onChange={(e) => {
 												field.onChange(e);
-												debounced(e.target.value); // Assuming username uniqueness check
+												debounced(e.target.value);
 											}}
 										/>
 									</FormControl>
@@ -211,4 +211,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default SignUp;
