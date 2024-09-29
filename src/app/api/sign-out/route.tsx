@@ -9,6 +9,8 @@ import { accessCookieOptions, refreshCookieOptions } from "@/utils/constants";
 import { verifyToken } from "@/utils/verifyToken";
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
 	await dbConnect();
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -34,10 +34,11 @@ const formSchema = z.object({
 		.max(16, "Password must be at most 16 characters"),
 });
 
-const Password = () => {
+// Define a new component to handle suspense boundaries
+const PasswordForm = () => {
 	const router = useRouter();
 	const searchParams = useSearchParams();
-	const url = searchParams.get("url");
+	const url = searchParams.get("url"); // Extract query param
 	const { toast } = useToast();
 	const [isLoading, setIsLoading] = useState(false);
 
@@ -145,6 +146,41 @@ const Password = () => {
 	};
 
 	return (
+		<Form {...form}>
+			<form onSubmit={form.handleSubmit(onSubmit)}>
+				<FormField
+					control={form.control}
+					name="password"
+					render={({ field }) => (
+						<FormItem>
+							<div className="flex items-center gap-2 min-w-[200px]">
+								<FormLabel>Password</FormLabel>
+								<FormControl>
+									<Input {...field} type="password" />
+								</FormControl>
+								<FormMessage />
+							</div>
+						</FormItem>
+					)}
+				/>
+				<Button
+					type="submit"
+					className="w-fit mt-4 mx-auto"
+					disabled={isLoading}
+				>
+					{isLoading ? (
+						<Loader2 className="w-4 h-4 animate-spin" />
+					) : (
+						"Submit"
+					)}
+				</Button>
+			</form>
+		</Form>
+	);
+};
+
+const Password = () => {
+	return (
 		<div className="w-full h-screen flex items-center justify-center">
 			<div className="container mx-auto px-4 md:px-12 h-full flex items-center">
 				<div className="w-full max-w-md mx-auto border rounded-md p-4 border-border">
@@ -155,41 +191,10 @@ const Password = () => {
 						This link is password protected. Please enter the
 						password to access the content.
 					</p>
-
-					<Form {...form}>
-						<form onSubmit={form.handleSubmit(onSubmit)}>
-							<FormField
-								control={form.control}
-								name="password"
-								render={({ field }) => (
-									<FormItem>
-										<div className="flex items-center gap-2 min-w-[200px]">
-											<FormLabel>Password</FormLabel>
-											<FormControl>
-												<Input
-													{...field}
-													type="password"
-												/>
-											</FormControl>
-											<FormMessage />
-										</div>
-									</FormItem>
-								)}
-							/>
-
-							<Button
-								type="submit"
-								className="w-fit mt-4 mx-auto"
-								disabled={isLoading}
-							>
-								{isLoading ? (
-									<Loader2 className="w-4 h-4 animate-spin" />
-								) : (
-									"Submit"
-								)}
-							</Button>
-						</form>
-					</Form>
+					{/* Suspense Boundary with a fallback */}
+					<Suspense fallback={<p>Loading...</p>}>
+						<PasswordForm />
+					</Suspense>
 				</div>
 			</div>
 		</div>
