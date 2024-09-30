@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import {
-	BarChart,
+	BarChart as RechartsBarChart,
 	Bar,
-	PieChart,
+	PieChart as RechartsPieChart,
 	Pie,
 	Cell,
 	XAxis,
@@ -110,11 +110,13 @@ const DashboardLinkData = ({ linkData }: { linkData: LinkType }) => {
 	const referrerData = prepareChartData("referrer");
 
 	const renderPieChart = (data: any, title: string) => (
-		<Card className="col-span-1">
-			<CardHeader>{title}</CardHeader>
+		<Card className="col-span-1 border border-border rounded-md bg-card shadow-sm">
+			<CardHeader className="text-xl font-semibold text-foreground mb-4">
+				{title}
+			</CardHeader>
 			<CardContent>
-				<ResponsiveContainer width="100%" height={300}>
-					<PieChart>
+				<ResponsiveContainer width="100%" height={350}>
+					<RechartsPieChart>
 						<Pie
 							data={data}
 							cx="50%"
@@ -134,25 +136,49 @@ const DashboardLinkData = ({ linkData }: { linkData: LinkType }) => {
 								/>
 							))}
 						</Pie>
-						<Tooltip />
+						<Tooltip
+							contentStyle={{
+								backgroundColor: "#333",
+								borderRadius: "8px",
+								border: "none",
+							}}
+							labelStyle={{ color: "#fff" }}
+							itemStyle={{ color: "#ddd" }}
+						/>
 						<Legend />
-					</PieChart>
+					</RechartsPieChart>
 				</ResponsiveContainer>
 			</CardContent>
 		</Card>
 	);
 
 	const renderBarChart = (data: any, title: string, dataKey = "value") => (
-		<Card className="col-span-2">
-			<CardHeader>{title}</CardHeader>
+		<Card className="col-span-2 border border-border rounded-md bg-card shadow-sm">
+			<CardHeader className="text-xl font-semibold text-foreground mb-4">
+				{title}
+			</CardHeader>
 			<CardContent>
-				<ResponsiveContainer width="100%" height={300}>
-					<BarChart data={data}>
-						<XAxis dataKey="name" />
-						<YAxis />
-						<Tooltip />
-						<Bar dataKey={dataKey} fill="#2a9d90" />
-					</BarChart>
+				<ResponsiveContainer width="100%" height={350}>
+					<RechartsBarChart data={data}>
+						<XAxis dataKey="name" stroke="#c4c4c4" />
+						<YAxis stroke="#c4c4c4" />
+						<Tooltip
+							contentStyle={{
+								backgroundColor: "#333",
+								borderRadius: "8px",
+								border: "none",
+							}}
+							labelStyle={{ color: "#fff" }}
+							itemStyle={{ color: "#ddd" }}
+						/>
+						<Legend />
+						<Bar
+							dataKey={dataKey}
+							stackId="a"
+							fill="#2a9d90"
+							radius={[10, 10, 0, 0]}
+						/>
+					</RechartsBarChart>
 				</ResponsiveContainer>
 			</CardContent>
 		</Card>
