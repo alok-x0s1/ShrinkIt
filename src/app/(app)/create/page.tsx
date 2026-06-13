@@ -143,7 +143,7 @@ const CreateLink = () => {
 										<FormControl>
 											<Input
 												className="border-none w-72 py-2"
-												placeholder="https://github.com/alok-x0s1"
+												placeholder="https://github.com/03aey"
 												{...field}
 												onFocus={() =>
 													setShowAdditionalOptions(

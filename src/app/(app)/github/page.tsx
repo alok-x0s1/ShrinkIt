@@ -26,7 +26,7 @@ const Github = () => {
 			try {
 				setLoading(true);
 				const response = await fetch(
-					"https://api.github.com/users/alok-x0s1"
+					"https://api.github.com/users/03aey"
 				);
 				if (!response.ok) throw new Error("Failed to fetch");
 
@@ -139,7 +139,7 @@ const Github = () => {
 							</div>
 							<div className="w-32 cursor-pointer border-l border-border flex justify-center items-center">
 								<a
-									href="https://github.com/alok-x0s1/ShrinkIt"
+									href="https://github.com/03aey/shrink-it"
 									target="_blank"
 								>
 									<Link />

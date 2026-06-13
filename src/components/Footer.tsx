@@ -79,7 +79,7 @@ export default function Footer() {
 					<h3 className="text-xl font-semibold mb-4">Follow Us</h3>
 					<div className="flex space-x-6 items-center">
 						<a
-							href="https://github.com/alok-x0s1"
+							href="https://github.com/03aey"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="text-primary hover:text-chart-1 transition-colors"

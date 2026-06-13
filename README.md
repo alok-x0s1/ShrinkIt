@@ -4,32 +4,31 @@ ShrinkIt is a modern URL shortener application built with **Next.js**, leveragin
 
 ## Features
 
--   **URL Shortening**: Quickly convert long URLs into shorter, shareable links.
--   **User Authentication**: Secure sign-up and login for users to manage their links.
--   **Link Management**: Authenticated users can view, edit, and delete their shortened links.
--   **Link Options for Logged-in Users**:
+- **URL Shortening**: Quickly convert long URLs into shorter, shareable links.
+- **User Authentication**: Secure sign-up and login for users to manage their links.
+- **Link Management**: Authenticated users can view, edit, and delete their shortened links.
+- **Link Options for Logged-in Users**:
+    - Password protection for links.
+    - Setting expiration time for links.
+    - Limiting the number of uses for each link.
+    - QR code generation for links.
 
-    -   Password protection for links.
-    -   Setting expiration time for links.
-    -   Limiting the number of uses for each link.
-    -   QR code generation for links.
-
--   **Dynamic Animations**: Enhancements using Framer Motion for smoother user experience.
+- **Dynamic Animations**: Enhancements using Framer Motion for smoother user experience.
 
 ## Tech Stack
 
--   **Frontend**: Next.js, Tailwind CSS, Framer Motion
--   **Backend**: Next.js API routes
--   **Database**: MongoDB
--   **Authentication**: JWT (JSON Web Tokens)
+- **Frontend**: Next.js, Tailwind CSS, Framer Motion
+- **Backend**: Next.js API routes
+- **Database**: MongoDB
+- **Authentication**: JWT (JSON Web Tokens)
 
 ## Installation
 
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/alok-x0s1/ShrinkIt.git
-cd ShrinkIt
+git clone https://github.com/03aey/shrink-it.git
+cd shrink-it
 ```
 
 ### Install Dependencies
@@ -75,13 +74,13 @@ Here you can see the analytics of the link.
 
 ### Also you have options to
 
--   Edit the link
--   Delete the link
--   Copy the link
--   Generate, view, download, share,and delete the QR code
--   Add password to the link and change it.
--   Set expiration date to the link
--   Limit the number of uses of the link
+- Edit the link
+- Delete the link
+- Copy the link
+- Generate, view, download, share,and delete the QR code
+- Add password to the link and change it.
+- Set expiration date to the link
+- Limit the number of uses of the link
 
 ## Create Page
 
@@ -102,15 +101,14 @@ Here you can see all the links you have created.
 
 Here you can see your profile.
 
--   Edit your profile
--   Change your password
--   Delete your account
--   Logout
+- Edit your profile
+- Change your password
+- Delete your account
+- Logout
 
-# Contributing
+---
 
-We welcome contributions to ShrinkIt! If you have any ideas or suggestions, please open an issue or submit a pull request.
-
-# Contact
-
-If you have any questions or feedback, please contact me on [alok-x0s1](https://github.com/alok-x0s1).
+[![GitHub](https://img.shields.io/badge/GitHub-03aey-181717?logo=github&logoColor=white)](https://github.com/03aey)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-in%2F03aey-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/in/03aey)
+[![Portfolio](https://img.shields.io/badge/Portfolio-03aey.vercel.app-000000?logo=vercel&logoColor=white)](https://03aey.vercel.app)
+[![Linktree](https://img.shields.io/badge/Linktree-03aey-43E55E?logo=linktree&logoColor=white)](https://linktr.ee/03aey)

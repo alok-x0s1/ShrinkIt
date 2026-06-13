@@ -51,7 +51,7 @@ const UrlCard = ({ link }: { link: LinkType }) => {
 				<div className="flex flex-col w-full gap-1">
 					<div className="flex gap-6 items-end">
 						<p className="font-medium">
-							{link.shortUrl.split(":3000/")[1]}
+							{link.shortUrl.split("://")[1]}
 						</p>
 						<div className="flex gap-3 items-center">
 							<div
